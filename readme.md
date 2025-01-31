@@ -1,16 +1,16 @@
 ---
 
-# **HTTP Sniffer**  
+# **HTTP Sniffer**
 
-## **Descrizione**  
-HTTP Sniffer è un programma Python che intercetta pacchetti HTTP in tempo reale e visualizza informazioni utili direttamente a schermo.  
-Supporta la registrazione dei pacchetti su file per analisi successive e permette di leggere dump di pacchetti salvati in precedenza.  
+## **Description**  
+HTTP Sniffer is a Python program that captures HTTP packets in real-time and displays useful information on the screen.  
+It supports saving packets to a file for later analysis and allows reading previously saved packet dumps.
 
 ---
 
-## **Requisiti**  
-✅ **Linguaggio**: Python 3  
-✅ **Moduli richiesti**:  
+## **Requirements**  
+✅ **Language**: Python 3  
+✅ **Required modules**:  
 - `os`
 - `pickle`
 - `scapy`
@@ -19,38 +19,38 @@ Supporta la registrazione dei pacchetti su file per analisi successive e permett
 - `colorama`
 - `time`
 
-Puoi installare i moduli mancanti con:  
+You can install the missing modules with:  
 ```bash
 pip install scapy colorama
 ```
 
 ---
 
-## **Utilizzo**  
+## **Usage**  
 
-Esegui il programma con i seguenti parametri:  
+Run the program with the following parameters:  
 ```bash
-python3 main.py -i <interfaccia> [-v True/False] [-w <file>] [-r <file>]
+python3 main.py -i <interface> [-v True/False] [-w <file>] [-r <file>]
 ```
 
-### **Opzioni disponibili**:
-| Opzione | Descrizione |
-|---------|------------|
-| `-i, --iface` | Specifica l'interfaccia di rete su cui intercettare i pacchetti |
-| `-v, --verbose` | Mostra informazioni dettagliate sui pacchetti intercettati (`True`/`False`, Default: `True`) |
-| `-w, --write` | Salva i pacchetti intercettati in un file per analisi future |
-| `-r, --read` | Legge pacchetti da un file di dump e ne visualizza le informazioni |
+### **Available Options**:
+| Option | Description |
+|--------|-------------|
+| `-i, --iface` | Specifies the network interface on which to capture packets |
+| `-v, --verbose` | Show detailed information about captured packets (`True`/`False`, Default: `True`) |
+| `-w, --write` | Save the captured packets to a file for future analysis |
+| `-r, --read` | Read packets from a dump file and display the information |
 
 ---
 
 ## **Output**  
-Il programma visualizza:  
-✅ **Indirizzi IP** coinvolti nella comunicazione HTTP  
-✅ **Metodo HTTP** utilizzato (`GET`, `POST`, ecc.)  
-✅ **URL richiesto** dall'host remoto  
-✅ **Dati grezzi (RAW Data)** se presenti nel pacchetto intercettato  
+The program displays:  
+✅ **IP addresses** involved in the HTTP communication  
+✅ **HTTP method** used (`GET`, `POST`, etc.)  
+✅ **Requested URL** by the remote host  
+✅ **Raw Data (RAW Data)** if present in the captured packet  
 
-Esempio di output in modalità **verbose**:
+Example of output in **verbose** mode:
 ```
 [+] [2025-01-31 14:30:45] 192.168.1.10 : GET => http://example.com/login
 [*] [2025-01-31 14:30:45] RAW Data: b'username=admin&password=12345'
@@ -58,6 +58,7 @@ Esempio di output in modalità **verbose**:
 
 ---
 
+## **`requirements.txt` File**  
 ```plaintext
 scapy
 colorama
@@ -65,59 +66,58 @@ colorama
 
 ---
 
-### **Come usare il file `requirements.txt`**  
-Per installare tutte le dipendenze, esegui il comando:  
+### **How to use the `requirements.txt` file**  
+To install all dependencies, run the following command:  
 ```bash
 pip install -r requirements.txt
 ```
 
-Se usi un ambiente virtuale (`venv`), attivalo prima di installare:  
+If you're using a virtual environment (`venv`), activate it before installing:  
 ```bash
 python -m venv venv
-source venv/bin/activate  # Su Linux/macOS
-venv\Scripts\activate     # Su Windows
+source venv/bin/activate  # On Linux/macOS
+venv\Scripts\activate     # On Windows
 pip install -r requirements.txt
 ```
 
+---
 
+## **Usage Examples**  
 
-## **Esempi di utilizzo**  
-
-1️⃣ **Sniffare pacchetti su un'interfaccia specifica (es. eth0)**:  
+1️⃣ **Capture packets on a specific interface (e.g., eth0)**:  
 ```bash
 sudo python3 main.py -i eth0
 ```
 
-2️⃣ **Sniffare pacchetti senza output dettagliato (verbose disattivato)**:  
+2️⃣ **Capture packets without detailed output (verbose disabled)**:  
 ```bash
 sudo python3 main.py -i wlan0 -v False
 ```
 
-3️⃣ **Salvare i pacchetti intercettati su file**:  
+3️⃣ **Save the captured packets to a file**:  
 ```bash
 sudo python3 main.py -i eth0 -w packets.dump
 ```
 
-4️⃣ **Leggere pacchetti da un file salvato in precedenza**:  
+4️⃣ **Read packets from a previously saved file**:  
 ```bash
 python3 main.py -r packets.dump
 ```
 
 ---
 
-## **Note**  
-⚠️ **Devi eseguire il programma con privilegi di root** per poter intercettare pacchetti:  
+## **Notes**  
+⚠️ **You must run the program with root privileges** to capture packets:  
 ```bash
 sudo python3 main.py -i eth0
 ```
 
-🔹 Assicurati di avere i permessi per sniffare la rete, in alcuni sistemi potrebbe essere necessario abilitare `CAP_NET_RAW`.  
+🔹 Make sure you have the necessary permissions to sniff the network. On some systems, it may be necessary to enable `CAP_NET_RAW`.
 
 ---
 
-## **Autore**  
-✍ **Creato da:** bobi.exe & NebulastudioTM  
-📅 **Ultimo aggiornamento:** 31/01/2025  
+## **Author**  
+✍ **Created by**: bobi.exe & NebulastudioTM  
+📅 **Last update**: 31/01/2025  
 
 ---
-
